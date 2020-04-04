@@ -1,17 +1,12 @@
 ---
-layout:     post
-title:      "设计模式"
-subtitle:   " \"设计原则\""
-date:       2020-02-29 12:00:00
-author:     "KH"
-header-img: "img/post-bg-2015.jpg"
-catalog: true
-tags:
-    - 设计模式
-    - Meta
+layout: post
+title: '设计原则'
+subtitle: '设计原则'
+date: 2020-03-02
+categories: 技术
+cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
+tags: 设计模式﻿
 ---
-
-> “Yeah It's on. ”
 
 # 设计模式原则
 

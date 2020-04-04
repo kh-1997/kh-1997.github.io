@@ -1,21 +1,35 @@
 ---
-layout:     post
-title:      "设计模式"
-subtitle:   " \"单一职责\""
-date:       2020-02-29 12:00:00
-author:     "KH"
-header-img: "img/post-bg-2015.jpg"
-catalog: true
-tags:
-    - 设计模式
-    - Meta
+layout: post
+title: '装饰器模式'
+subtitle: '装饰器模式'
+date: 2020-03-02
+categories: 技术
+cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
+tags: 设计模式﻿
 ---
 
-> “Yeah It's on. ”
+# 设计模式四
 
+------
 
 # 单一职责
 
+我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，**Cmd Markdown** 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：
+
+> * 整理知识，学习笔记
+> * 发布日记，杂文，所见所想
+> * 撰写发布技术文稿（代码支持）
+> * 撰写发布学术论文（LaTeX 公式支持）
+
+![cmd-markdown-logo](https://www.zybuluo.com/static/img/logo.png)
+
+除了您现在看到的这个 Cmd Markdown 在线版本，您还可以前往以下网址下载：
+
+### [Windows/Mac/Linux 全平台客户端](https://www.zybuluo.com/cmd/)
+
+> 请保留此份 Cmd Markdown 的欢迎稿兼使用说明，如需撰写新稿件，点击顶部工具栏右侧的 <i class="icon-file"></i> **新文稿** 或者使用快捷键 `Ctrl+Alt+N`。
+
+------
 
 ## 装饰者模式
 
@@ -42,34 +56,8 @@ tags:
 注意：
 
 1. 利用运行时多态绑定解决代码重复的问题。
-
 2. 装饰类就是为子类提供运行时多态的基类的类
-
 3. Decorator类在接口上表现为is-a Component的继承关系，即Decorator类继承了Component类所具有的接口，作用是实现接口规范。 但在实现上又表现为has-a Component的组合关系，即Decorator类又使用了另外一个Component类，作用是实现运行时多态。
-
-
-## 桥接模式
-
-- 使用场景：抽象和实现分离。极大地提高了系统的灵活性，让抽象部分和实现部分分离开来，有助于系统进行分层设计，产生更好的结构化系统。
-
-- 使用原理：抽象和实现分离**，通过抽象类和接口**将聚合关联建立在抽象层**，需要正确识别出系统中两个独立变化的维度，在这两个维度上分别进行实现。
-- 设计原则：
-
-- 合成复用原则：多用组合、聚合，少用继承
-
-- 依赖倒转原则：将变化进行隔离，使高层依赖于低层接口，具体实现依赖于接口
-
-- 开闭原则：增加新的功能，在已有代码上进行扩展。
-
-  ![image-20200303172818906](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200303172818906.png)
-
-  
-
-![image-20200303172549616](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200303172549616.png)
-
-将抽象部分（业务功能）和实现部分（平台选择）分离。使他们可以独立的发生变化。
-
-装饰者模式不同：需要装饰者，没有进行抽象和实现分离，抽象和实现都在一个维度变化，使用同一个业务。
 
 ### 文稿发布和分享
 
