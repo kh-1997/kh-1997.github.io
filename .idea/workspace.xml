@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0512fd89-13ab-4406-be2e-1cec8399f933" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_includes/about/zh.md" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/about/zh.md" afterDir="false" />
-    </list>
+    <list default="true" id="0512fd89-13ab-4406-be2e-1cec8399f933" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
         <entry file="file://$PROJECT_DIR$/_includes/about/en.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-721" />
+              <first_editor />
               <second_editor />
             </state>
           </provider>
@@ -89,8 +87,8 @@
         <entry file="file://$PROJECT_DIR$/_includes/about/zh.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="108">
-                <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <first_editor relative-caret-position="351">
+                <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
               </first_editor>
               <second_editor />
             </state>
@@ -130,9 +128,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="111" />
-    <option name="y" value="126" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-94" />
+    <option name="y" value="130" />
     <option name="width" value="1802" />
     <option name="height" value="982" />
   </component>
@@ -215,15 +213,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585985973071</updated>
-      <workItem from="1585985975220" duration="2268000" />
+      <workItem from="1585985975220" duration="2593000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2268000" />
+    <option name="totallyTimeSpent" value="2593000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="111" y="126" width="1802" height="982" extended-state="0" />
+    <frame x="-94" y="130" width="1802" height="982" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -321,7 +319,7 @@
     <entry file="file://$PROJECT_DIR$/_includes/about/en.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-721" />
+          <first_editor />
           <second_editor />
         </state>
       </provider>
@@ -329,8 +327,8 @@
     <entry file="file://$PROJECT_DIR$/_includes/about/zh.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="108">
-            <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <first_editor relative-caret-position="351">
+            <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
           </first_editor>
           <second_editor />
         </state>
