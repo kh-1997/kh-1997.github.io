@@ -5,7 +5,7 @@ subtitle: 'ReentrantLock'
 date: 2020-04-18
 categories: program
 cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
-tags: JAVA高并发
+tags: 高并发
 ---
 
 # JAVA高并发
