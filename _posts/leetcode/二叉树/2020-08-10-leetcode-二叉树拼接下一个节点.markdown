@@ -1,15 +1,14 @@
 ---
 layout:     post
-title:      "填充所有节点的next指针"
-subtitle:   "非递归解法"
-date:       2020-08-10 12:00:00
+title:      "二叉树填充next指针"
+subtitle:   "递归解法"
+date:       2020-03-10 12:00:00
 author:     "KH"
 header-img: "img/post-bg-apple-event-2015.jpg"
 tags:
     - 二叉树
     - 产品
 ---
-
 > 这篇文章转载牛客网
 
 ### 题目描述
