@@ -1,0 +1,50 @@
+---
+layout:     post
+title:      "不同的二叉搜索树的个数"
+subtitle:   "递归"
+date:       2020-08-27 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 二叉树
+    - 产品
+---
+
+> 这篇文章转载牛客网
+
+## 题目描述
+
+## 题目描述
+
+给定一个值n，能构建出多少不同的值包含1...n的二叉搜索树（BST）？
+
+例如
+
+给定 n = 3, 有五种不同的二叉搜索树（BST）
+
+![img](https://uploadfiles.nowcoder.com/images/20200819/59_1597814998150_B174853E6D8B3AC7D1CB1011AFCDDA64)
+
+### 题目思路
+
+利用确定的个数，相乘左边和右边的结果，然后加起来就可以。
+
+递归即可。
+
+```vim
+   public int numTrees (int n) {
+        // write code here
+        if(n<=1) return 1;
+        int sum = 0;
+        for(int i=1;i<=n;i++){
+            int left = numTrees(i-1);
+            int right = numTrees(n-i);
+            sum+=left*right;
+        }
+        return sum;
+    }
+```
+
+
+
+
+

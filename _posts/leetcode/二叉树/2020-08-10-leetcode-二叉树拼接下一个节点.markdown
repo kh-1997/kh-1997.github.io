@@ -1,0 +1,89 @@
+---
+layout:     post
+title:      "填充所有节点的next指针"
+subtitle:   "非递归解法"
+date:       2020-08-10 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 二叉树
+    - 产品
+---
+
+> 这篇文章转载牛客网
+
+### 题目描述
+
+给定一个二叉树
+
+```
+    struct TreeLinkNode {
+        TreeLinkNode *left;
+        TreeLinkNode *right;
+        TreeLinkNode *next;
+    }
+```
+
+填充所有节点的next指针，指向最接近它的同一层右边节点。如果没有
+
+同一层没有右边的节点
+
+，则应该将next指针设置为NULL。
+
+初始时，所有的next指针都为NULL
+
+注意：
+
+- 你只能使用常量级的额外内存空间
+- 可以假设给出的二叉树是一个完美的二叉树(即，所有叶子节点都位于同一层，而且每个父节点都有两个孩子节点)。
+
+例如：给出如下的完美二叉树
+
+![img](https://uploadfiles.nowcoder.com/images/20200819/59_1597813809997_E56A36715F37B37CE949B0C7B98C5533)
+
+
+
+调用完你给出的函数以后，这颗二叉树应该 变成：
+
+![img](https://uploadfiles.nowcoder.com/images/20200819/59_1597813848148_8FAEFB4C7A0141A9BC46AC13FE3F8D99)
+
+### 题目思路
+
+It's there! 二叉树后序遍历非递归。
+
+设置一个队列，判断是不是每一层的最后一个节点即i==size-1，如果是则tmp.next = null否则tmp.next = queue.peek();
+
+```vim
+ public void postorderTraversal (TreeNode root) {
+        // write code here
+        ArrayList<Integer>list = new ArrayList<>();
+        if(root==null) return list;
+        Queue<TreeNode>queue = new LinkedList<>();
+        TreeNode cur = root;
+        stack.add(root);
+        while(!stack.isEmpty()){
+            int size = queue.size();
+            for(int i=0;i<size;i++){
+                 TreeNode tmp = queue.poll();
+                 if(i==size-1){
+                     tmp.next = null;
+                 }else{
+                     tmp.next = queue.peek();
+                 }
+                 if(tmp.left!=null){
+                	stack.push(tmp.left);
+            	 }
+            	 if(tmp.right!=null){
+                    stack.push(tmp.right);
+                 }
+            }
+        }
+    }
+```
+
+
+
+
+
+
+

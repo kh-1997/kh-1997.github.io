@@ -1,0 +1,98 @@
+---
+layout:     post
+title:      "判断s3是否可以由s1和s2交织而成"
+subtitle:   "动态规划"
+date:       2020-08-30 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 动态规划
+    - 产品
+---
+
+> 
+
+## 题目描述
+
+给出三个字符串s1, s2, s3,判断s3是否可以由s1和s2交织而成。
+
+例如：
+
+给定
+
+s1 ="aabcc",
+s2 ="dbbca",
+
+如果s3 ="aadbbcbcac", 返回true
+
+如果s3 ="aadbbbaccc", 返回false
+
+Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+
+For example,
+Given:
+s1 ="aabcc",
+s2 ="dbbca",
+
+When s3 ="aadbbcbcac", return true.
+When s3 ="aadbbbaccc", return false.
+
+### 题目思路
+
+动态规划
+
+一、状态定义：
+
+dp[i][j]`代表S3的前i+j个字符是否能够由s1的前i个字符与s2的前j个字符交织。
+
+二、初始化：
+
+`dp[0][i] = dp[0][i-1]&&s2.charAt(i-1)==s3.charAt(i-1);`
+
+`dp[i][0] = dp[i-1][0]&&s1.charAt(i-1)==s3.charAt(i-1);`
+
+三、状态转移方程：有两种情况
+
+1、当 `dp[i][j] = dp[i-1][j] && s1[i]==s3[i+j]`
+
+dp[i-1][j]表示若s3的前i+j-1个字符能够由s1前i-1个字符和s2的前j个字符交织而成，那么只需要s1的第i个字符与s3的第i+j个字符相等（charAt索引从0开始），那么dp[i][j]=true;
+
+2、当 `dp[i][j] = dp[i][j-1] && s2[j]==s3[i+j] ` 
+
+dp[i-1][j]表示若s3的前i+j-1个字符能够由s1前i个字符和s2的前j-1个字符交织而成，那么只需要s2的第j个字符与s3的第i+j个字符相等（charAt索引从0开始），那么dp[i][j]=true;
+
+```vim
+/*
+ *  思路：dp题。
+ *  状态定义：dp[i][j]代表s[0~i-1]中T[0~j-1]不同子串的个数。
+ *  递推关系式：S[i-1]!= T[j-1]：  DP[i][j] = DP[i][j-1] （不选择S中的s[i-1]字符）
+ *              S[i-1]==T[j-1]： DP[i][j] = DP[i-1][j-1]（选择S中的s[i-1]字符） + DP[i][j-1]
+ *  初始状态：第0列：DP[i][0] = 0，第0行：DP[0][j] = 1
+ */
+ 
+public class Solution {
+    public boolean isInterleave(String s1, String s2, String s3) {
+        if(s1.length()+s2.length()!=s3.length())
+            return false;
+        boolean[][] dp = new boolean[s1.length()+1][s2.length()+1];
+        dp[0][0] = true;
+        for(int i=1;i<dp[0].length;i++)
+            dp[0][i] = dp[0][i-1]&&s2.charAt(i-1)==s3.charAt(i-1);
+        for(int i=1;i<dp.length;i++)
+            dp[i][0] = dp[i-1][0]&&s1.charAt(i-1)==s3.charAt(i-1);
+ 
+        for(int i=1;i<dp.length;i++)
+            for(int j=1;j<dp[0].length;j++){
+                dp[i][j]=dp[i-1][j]&&(s1.charAt(i-1)==s3.charAt(i+j-1))||dp[i][j-1]&&(s2.charAt(j-1)==s3.charAt(i+j-1));
+            }
+ 
+        return dp[s1.length()][s2.length()];
+    }
+ 
+}
+```
+
+
+
+
+

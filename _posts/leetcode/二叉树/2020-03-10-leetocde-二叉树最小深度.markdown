@@ -47,9 +47,6 @@ public class Solution {
         }
         int left = run(root.left);
         int right = run(root.right);
-        if(left==0||right==0){
-            return left+right+1;
-        }
         return left<right?left+1:right+1;
         
     }
@@ -58,7 +55,24 @@ public class Solution {
 
 
 
+## 题目描述
 
+求给定二叉树的最大深度，
 
+最大深度是指树的根结点到最远叶子结点的最长路径上结点的数量。
 
+```
+    public int maxDepth (TreeNode root) {
+        // write code here
+        return  depth(root);
+    }
+    
+    public int depth(TreeNode root){
+        if(root==null) return 0;
+        if(root.left==null&&root.right==null) return 1;
+        int left = depth(root.left);
+        int right = depth(root.right);
+        return  left>right?left+1:right+1;
+    }
+```
 

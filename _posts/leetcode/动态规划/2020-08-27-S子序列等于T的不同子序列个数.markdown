@@ -1,0 +1,78 @@
+---
+layout:     post
+title:      "S子序列等于T的不同子序列个数"
+subtitle:   "动态规划"
+date:       2020-08-30 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 动态规划
+    - 产品
+---
+
+> 
+
+## 题目描述
+
+给定两个字符串S和T，返回S子序列等于T的不同子序列个数有多少个？
+
+字符串的子序列是由原来的字符串删除一些字符（也可以不删除）在不改变相对位置的情况下的剩余字符（例如，"ACE"is a subsequence of"ABCDE"但是"AEC"不是）
+例如：
+
+S ="rabbbit", T ="rabbit"
+返回3
+
+Given a string S and a string T, count the number of distinct subsequences of T in S.
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie,"ACE"is a subsequence of"ABCDE"while"AEC"is not).
+Here is an example:
+S ="rabbbit", T ="rabbit"
+Return3.
+
+### 题目思路
+
+动态规划
+
+`dp[i][j]`代表S的前i个字符包含T的前j个字符的数量。
+
+当S[i]!=T[j] 的时候 `dp[i][j] = dp[i-1][j]`
+
+当S[i]==T[j]的时候 `dp[i][j]=dp[i-1][j]+dp[i-1][j-1] ` 相等的字符可用可不用
+
+```vim
+/*
+ *  思路：dp题。
+ *  状态定义：dp[i][j]代表s[0~i-1]中T[0~j-1]不同子串的个数。
+ *  递推关系式：S[i-1]!= T[j-1]：  DP[i][j] = DP[i][j-1] （不选择S中的s[i-1]字符）
+ *              S[i-1]==T[j-1]： DP[i][j] = DP[i-1][j-1]（选择S中的s[i-1]字符） + DP[i][j-1]
+ *  初始状态：第0列：DP[i][0] = 0，第0行：DP[0][j] = 1
+ */
+ 
+public class Solution {
+    public int numDistinct(String S, String T) {
+        int row = S.length() + 1;
+        int col = T.length() + 1;
+        int[][] dp = new int[row][col];
+        for (int i = 1; i < col; i++) {
+            dp[0][i] = 0;
+        }
+        for (int i = 0; i < row; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 1; i < row; i++) {
+            for (int j = 1; j < col; j++) {
+                if (S.charAt(i - 1) == T.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
+        return dp[row - 1][col - 1];
+    }
+}
+```
+
+
+
+
+

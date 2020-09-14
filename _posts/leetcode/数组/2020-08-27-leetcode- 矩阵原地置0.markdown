@@ -1,0 +1,86 @@
+---
+layout:     post
+title:      "矩阵原地置换为0"
+subtitle:   "数组"
+date:       2020-08-27 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 数组
+    - 产品
+---
+
+> 这篇文章转载牛客网
+
+## 题目描述
+
+给定一个m*n的矩阵，如果有一个元素是0，就把该元素所在的行和列上的元素全置为0，要求使用原地算法。
+
+拓展：
+
+你的算法有使用额外的空间吗？
+
+一种比较直接的算法是利用O(m,n)的空间，但是这不是一个好的解法
+
+使用简单的改进可以在O(m+n)的空间解决这个问题，但是还不是最佳的解法
+
+你能在常量级的空间复杂度内解决这个问题吗？
+
+### 题目思路
+
+利用第0行和第0列记录是否为0，首先判断第0行和第0列是否需要置换为0，然后讲【1.1】到【m.n】的数据如果【i,j】等于0，则将对应第0行和第0列的i和j位置零，然后判断第0行和第0列的值，判断矩阵的值是否需要置0。
+
+```vim
+  //时间复杂度O(mn)，空间复杂度O(1)
+//利用第一行和第一列的空间做记录
+public class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean col = false;
+        boolean row = false;
+        for(int i=0;i<m;i++){
+            if(matrix[i][0]==0){
+                col = true;
+            }
+        }
+        for(int j=0;j<n;j++){
+            if(matrix[0][j]==0){
+                row = true;
+            }
+        }
+        
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[i][j]==0){
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
+                }
+            }
+        }
+        
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[0][j]==0||matrix[i][0]==0){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        if(col==true){
+            for(int i=0;i<m;i++){
+                matrix[i][0] = 0;
+            }
+        }
+        if(row==true){
+            for(int j=0;j<n;j++){
+                matrix[0][j] = 0;
+            }
+        }
+    }
+}
+```
+
+
+
+
+

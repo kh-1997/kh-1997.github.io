@@ -1,0 +1,74 @@
+---
+layout:     post
+title:      "搜索旋转数组"
+subtitle:   "递归"
+date:       2020-08-27 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 二叉树
+    - 产品
+---
+
+> 这篇文章转载牛客网
+
+## 题目描述
+
+思考题目 "Search in Rotated Sorted Array":
+
+如果数组种允许有重复元素怎么办？
+
+会影响时间复杂度吗？是怎样影响时间复杂度的，为什么？
+编写一个函数判断给定目标值是否在数组中。
+
+Follow up for "Search in Rotated Sorted Array":
+
+What if duplicates are allowed?
+
+Would this affect the run-time complexity? How and why?
+
+Write a function to determine if a given target is in the array.
+
+示例
+
+[1],1
+
+true
+
+### 解题思路
+
+首先判断左边有序还是右边有序，如果A[left]<A[mid],数组左边有序，判断target是否在左边有序的序列里，如果在right = mid-1，不在，left = mid+1。判断target是否在右边有序的序列里，如果A[right]>A[mid], 右边有序，则如果在这个有序范围里，在left = mid+1，如果不在right = mid-1；
+
+```vim
+   public boolean search (int[] A, int target) {
+        // write code here
+        
+        int left = 0;
+        int right = A.length-1;
+        while(left<=right){
+            int mid = left+(right-left)/2;
+            if(A[mid]==target) return true;
+            if(A[mid]>A[left]){
+                if(A[left]<=target&&A[mid]>target){
+                    right = mid -1;
+                }else{
+                    left = mid + 1;
+                }
+            }else if(A[mid]<A[left]){
+                if(A[mid]<target&&target<=A[right]){
+                    left = mid + 1;
+                }else{
+                    right = mid - 1;
+                }
+            }else{
+                left++;
+            }
+        }
+        return false;
+    }
+```
+
+
+
+
+

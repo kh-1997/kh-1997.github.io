@@ -1,0 +1,59 @@
+---
+layout:     post
+title:      "最长的格式正确的括号子串的长度"
+subtitle:   "栈"
+date:       2020-08-30 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 栈
+    - 产品
+---
+
+> 
+
+## 题目描述
+
+给出一个仅包含字符'('和')'的字符串，计算最长的格式正确的括号子串的长度。
+
+对于字符串"(()"来说，最长的格式正确的子串是"()"，长度为2.
+
+再举一个例子：对于字符串")()())",来说，最长的格式正确的子串是"()()"，长度为4.
+
+### 题目思路
+
+栈解决巧妙方法
+
+(),)))(),((()三种情况，if(stack.isEmpty())，last更新左边界
+
+```vim
+public int longestValidParentheses (String s) {
+        // write code here
+        Stack<Integer>stack = new Stack<>();
+        int res = 0;
+        int last = -1;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                stack.push(i);
+            }else{
+                if(stack.isEmpty()){
+                    last = i;
+                }else{
+                    stack.pop();
+                    if(stack.isEmpty()){
+                        res = Math.max(res,i-last);
+                    }else{
+                        res = Math.max(res,i-stack.peek());
+                    }
+                }
+            }
+            
+        }
+        return res;
+    }
+```
+
+
+
+
+

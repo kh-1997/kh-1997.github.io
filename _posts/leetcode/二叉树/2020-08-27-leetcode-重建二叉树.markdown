@@ -1,0 +1,58 @@
+---
+layout:     post
+title:      "中序遍历和后序遍历，请构造这颗二叉树"
+subtitle:   "递归"
+date:       2020-08-27 12:00:00
+author:     "KH"
+header-img: "img/post-bg-apple-event-2015.jpg"
+tags:
+    - 二叉树
+    - 产品
+---
+
+> 这篇文章转载牛客网
+
+## 题目描述
+
+给出一棵树的中序遍历和后序遍历，请构造这颗二叉树
+
+注意：
+
+保证给出的树中不存在重复的节点
+
+Given inorder and postorder traversal of a tree, construct the binary tree.
+
+Note: 
+You may assume that duplicates do not exist in the tree.
+
+### 题目思路
+
+利用确定序列的起点和终点。
+
+递归即可。
+
+```vim
+    public TreeNode buildTree (int[] inorder, int[] postorder) {
+        // write code here
+        return build(postorder,0,postorder.length-1,inorder,0,inorder.length-1);
+    }
+    public TreeNode build(int[]post,int ps,int pe,int[]in,int is,int ie){
+        if(ps>pe||is>ie) return null;
+        int r = post[pe];
+        int i = 0;
+        for(;i<in.length;i++){
+            if(in[i]==r){
+                break;
+            }
+        }
+        TreeNode root = new TreeNode(r);
+        root.left = build(post,ps,ps+i-is-1,in,is,i-1);
+        root.right = build(post,ps+i-is,pe-1,in,i+1,ie);
+        return root;
+    }
+```
+
+
+
+
+
