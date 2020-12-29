@@ -6,7 +6,7 @@ date:       2020-08-30 12:00:00
 author:     "KH"
 header-img: "img/post-bg-apple-event-2015.jpg"
 tags:
-    - 栈
+    - 单调栈
     - 产品
 ---
 
@@ -30,30 +30,25 @@ tags:
 单调栈，判断如果对于每个字符ch ，ch大于栈顶元素top，并且top元素再后面还出现过，则top出栈，如果栈中存在ch，则跳过。最后栈中的元素就是结果。
 
 ```vim
-public int longestValidParentheses (String s) {
-        // write code here
-        Stack<Integer>stack = new Stack<>();
-        int res = 0;
-        int last = -1;
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='('){
-                stack.push(i);
-            }else{
-                if(stack.isEmpty()){
-                    last = i;
-                }else{
-                    stack.pop();
-                    if(stack.isEmpty()){
-                        res = Math.max(res,i-last);
-                    }else{
-                        res = Math.max(res,i-stack.peek());
-                    }
-                }
+class Solution {
+    public String smallestSubsequence(String text) {
+        if(text==null||text.length()==0) return "";
+        Stack<Character>stack = new Stack<>();
+        for(int i=0;i<text.length();i++){
+            char ch = text.charAt(i);
+            if(stack.contains(ch)) continue;
+            while(!stack.isEmpty() && (stack.peek()>ch) && text.indexOf(stack.peek(), i) != -1){
+                stack.pop();
             }
-            
+            stack.push(ch);
         }
-        return res;
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()){
+            sb.insert(0,stack.pop());
+        }
+        return sb.toString();
     }
+}
 ```
 
 
